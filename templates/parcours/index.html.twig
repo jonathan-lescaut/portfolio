@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Parcours index
+{% endblock %}
+
+{% block body %}
+	<h1>Parcours index</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Titre_parcours</th>
+				<th>Contenu_parcours</th>
+				<th>Date_parcours</th>
+				<th>Duree_parcours</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for parcour in parcours %}
+				<tr>
+					<td>{{ parcour.id }}</td>
+					<td>{{ parcour.titreParcours }}</td>
+					<td>{{ parcour.contenuParcours }}</td>
+					<td>{{ parcour.dateParcours }}</td>
+					<td>{{ parcour.dureeParcours }}</td>
+					<td>
+						<a href="{{ path('parcours_show', {'id': parcour.id}) }}">show</a>
+						<a href="{{ path('parcours_edit', {'id': parcour.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<div>
+
+		<a href="{{ path('parcours_new') }}">Create new</a>
+	</div>
+	<div>
+		<a href="{{ path('admin') }}">retour</a>
+	</div>
+{% endblock %}

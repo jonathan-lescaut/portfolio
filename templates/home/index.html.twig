@@ -1,0 +1,337 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jonathan Lescaut || Développeur Web
+{% endblock %}
+
+{% block body %}
+	<!-- ============================================= NAVBAR ==================================================== -->
+	<header class="accueil" id="accueil">
+		<nav class="navbar fixed-top navbar-expand-lg">
+			<a class="navbar-brand" href="#">Jonathan Lescaut</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="effet_lien collapse navbar-collapse collapse w-100" id="navbarNavAltMarkup">
+				<ul class="navbar-nav ml-auto w-100 justify-content-end">
+					<li class="nav-link">
+						<a class="nav-item mr-2" href="#">Accueil</a>
+					</li>
+					<li class="nav-link">
+						<a class="nav-item mr-2" href="#presentation">À propos</a>
+					</li>
+					<li class="nav-link">
+						<a class="nav-item mr-2" href="#competence">Compétences</a>
+					</li>
+					<li class="nav-link">
+						<a class="nav-item mr-2" href="#portFolio">Portfolio</a>
+					</li>
+					<li class="nav-link">
+						<a class="nav-item mr-2" href="#parcours">Parcours</a>
+					</li>
+					<li class="nav-link">
+						<a class="nav-item mr-2" href="#contact">Contact</a>
+					</li>
+					<li class="nav-link">
+					{% for contact in contact %}
+						<a class="nav-item mr-2" href="{{ asset('uploads/brochures/' ~ contact.getCvContact) }}">Voir mon CV</a>
+					{% endfor %}
+
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<!-- ============================================= TITRE ==================================================== -->
+		<div class="container pageTitre">
+			<div class="row">
+				<div
+					class="col-md-12 text-center titre d-flex flex-column justify-content-center">
+					{# <h1>
+																				<span>web
+																				</span>développeur</h1>
+																			<h1>junior</h1> #}
+					{% for titre in titre %}
+						<h1>{{ titre.getNomTitre() }}</h1>
+					{% endfor %}
+
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- ============================================= PRESENTATION ==================================================== -->
+
+	<section id="presentation" class="presentation">
+		<h2 class="titrePresentation">présentation</h2>
+		<div class="container">
+			<div class="row">
+
+				{% for presentation in presentation %}
+
+					<div class="col-lg-6 textePresentation">
+						{{presentation.getcontenuPresentation()|raw}}
+					</div>
+					<div class="col-lg-1"></div>
+					<div class="col-lg-5 align-self-center">
+						<img src="{{ asset('uploads/photos/' ~ presentation.getPhotoPresentation) }}" width="100">
+					</div>
+				{% endfor %}
+
+			</div>
+		</div>
+	</section>
+	<!-- ========================================== BOUTON REALISATION ================================================= -->
+
+	<section class="boutonRealisation">
+		<div class="container">
+			<div class="row blocRea">
+				<div class="col-md-4 "></div>
+				<div class="col-md-4 blocRealisation">
+					<a href="#">Voir mes réalisations</a>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+		</div>
+
+
+	</section>
+
+	<!-- ========================================== TECHNOLOGIES ================================================= -->
+
+
+	<section class="presentation">
+		<h2 class="titreTechnologies">Technologies</h2>
+		<div class="container">
+			<div class="row blocTechno">
+
+			{% for technologie in technologie %}
+				{{technologie.getLogoTechologie|raw}}
+			{% endfor %}
+
+
+			</div>
+		</div>
+	</section>
+
+	<!-- ========================================== CAROUSSEL ================================================= -->
+
+
+	<div class="container-fluid blocCarousselProduct meteoCarou">
+		{# <div class="row">API OpenWeather</div> #}
+		<div class="row">
+			<ul id="c" class="carousselProduct liCarousselProduct">
+				{% for element in weather %}
+
+					<li class="col-md-3 liCaroussel">
+						<p class="pImgCaroussel">{{element.name}}</p>
+						<p>{{element.time}}</p>
+
+
+						{% if element.weather is same as "Thunderstorm" %}
+							<div class="blocImgCaroussel">
+								<div class="icon thunder-storm imgCarousselProductStar">
+									<div class="cloud"></div>
+									<div class="lightning">
+										<div class="bolt"></div>
+										<div class="bolt"></div>
+									</div>
+								</div>
+							</div>
+						{% endif %}
+						{% if element.weather is same as "Drizzle" %}
+							<div class="blocImgCaroussel">
+								<div class="icon sun-shower imgCarousselProductStar">
+									<div class="cloud"></div>
+									<div class="sun">
+										<div class="rays"></div>
+									</div>
+									<div class="rain"></div>
+								</div>
+							</div>
+						{% endif %}
+						{% if element.weather is same as "Rain" %}
+							<div class="blocImgCaroussel">
+								<div class="icon rainy imgCarousselProductStar">
+									<div class="cloud"></div>
+									<div class="rain"></div>
+								</div>
+							</div>
+						{% endif %}
+						{% if element.weather is same as "Snow" %}
+							<div class="blocImgCaroussel">
+								<div class="icon flurries imgCarousselProductStar">
+									<div class="cloud"></div>
+									<div class="snow">
+										<div class="flake"></div>
+										<div class="flake"></div>
+									</div>
+								</div>
+							</div>
+						{% endif %}
+						{% if element.weather is same as "Clear" %}
+							<div class="blocImgCaroussel">
+								<div class="icon sunny imgCarousselProductStar">
+									<div class="sun">
+										<div class="rays"></div>
+									</div>
+								</div>
+							</div>
+						{% endif %}
+						{% if element.weather is same as "Clouds" %}
+							<div class="blocImgCaroussel">
+								<div class="icon cloudy imgCarousselProductStar">
+									<div class="cloud"></div>
+									<div class="cloud"></div>
+								</div>
+							</div>
+						{% endif %}
+						{% if element.weather is same as "Mist" %}
+							<div class="blocImgCaroussel">
+								<div class="icon cloudy imgCarousselProductStar">
+									<div class="cloud"></div>
+									<div class="cloud"></div>
+								</div>
+							</div>
+						{% endif %}
+						<p>{{element.temp}}
+							°C</p>
+
+
+					</li>
+
+
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+
+	<!-- ========================================== COMPETENCES ================================================= -->
+
+	<section id="competence" class="competences">
+
+		<h2>Compétences</h2>
+
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<img src="{{asset('uploads/competence.jpg') }}" alt="competences">
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+			<div class="row">
+				{% for competence in competence %}
+
+					<div class="col-md-4 blocCompetence">
+						<div class="row titreCompetence">{{competence.gettitreCompetence}}</div>
+						<div class="row texteCompetence">{{competence.getcontenuCompetence}}</div>
+					</div>
+				{% endfor %}
+
+			</div>
+
+
+		</div>
+
+	</section>
+
+	<!-- ========================================== PORTFOLIO ================================================= -->
+
+
+	<section id="portFolio" class="portFolio">
+		<h2>Portfolio</h2>
+		<h3>Mes réalisations</h3>
+
+		<div class="container-fluid">
+
+			<div class="row">
+				{% for realisation in realisation %}
+
+					<div class="col-md-6 blocRea">
+						<div class="imgRealisation">
+							<a href="{{realisation.getSiteRealistation}}"><img src="{{asset('uploads/photos/' ~ realisation.getImageRealisation) }}" alt=""></a>
+							<div class="overlay">
+
+								<div class="resume">
+									{{realisation.getResumeRealisation|raw}}
+								</div>
+								<div class="fonctionnalite">
+
+									{{realisation.getFonctionnaliteRealisation|raw}}
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+				{% endfor %}
+			</div>
+
+		</div>
+
+	</section>
+
+	<!-- ========================================== PARCOURS ================================================= -->
+
+	<section id="parcours" class="parcours">
+		<h2>Mon parcours</h2>
+
+		<div class="timeline2">
+			<ul>
+				{% for parcours in parcours %}
+
+					<li>
+						<div>
+							<time>{{parcours.getTitreParcours}}</time>
+							{{parcours.getContenuParcours}}
+						</div>
+						<span class="time">
+							<span>{{parcours.getDateParcours}}</span>
+							<span>{{parcours.getDureeParcours}}</span>
+
+						</span>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+
+
+	</section>
+
+	<section id="contact" class="contact">
+
+		<h2>CONTACTS</h2>
+		{% for contact in contact %}
+			<h3>{{ contact.getTitreContact}}</h3>
+			<p>{{ contact.getContenuContact}}</p>
+			<div class="bloc-cv">
+
+				<a href="{{ asset('uploads/brochures/' ~ contact.getCvContact) }}">Voir mon CV
+					<img class="image-cv" src="{{asset('uploads/photos/' ~ contact.getCvImageContact) }}" alt="Mon cv"></a>
+			</div>
+
+			<p>{{ contact.getMailContact}}</p>
+		{% endfor %}
+		<ul>
+			{% if (is_granted('ROLE_USER')) %}
+
+				<li class="nav-link">
+					<a class="nav-item mr-2" href="{{'/admin'}}">Administration</a>
+				</li>
+				<li class="nav-link">
+					<a class="nav-item mr-2" href="{{'/login'}}">Déconnection</a>
+				</li>
+			{% else %}
+
+				<li class="nav-link">
+					<a class="nav-item mr-2" href="{{'/login'}}">Se connecter</a>
+				</li>
+				<li class="nav-link">
+					<a class="nav-item mr-2" href="{{'/register'}}">Inscription</a>
+				</li>
+
+			{% endif %}
+		</ul>
+
+	</section>
+
+{% endblock %}

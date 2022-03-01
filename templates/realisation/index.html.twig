@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Realisation index{% endblock %}
+
+{% block body %}
+    <h1>Realisation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre_realisation</th>
+                <th>Image_realisation</th>
+                <th>Resume_realisation</th>
+                <th>Fonctionnalite_realisation</th>
+                <th>Site_realisation</th>
+                <th>Git_realisation</th>
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for realisation in realisations %}
+            <tr>
+                <td>{{ realisation.id }}</td>
+                <td>{{ realisation.titreRealisation }}</td>
+                <td>{{ realisation.imageRealisation }}</td>
+                <td>{{ realisation.resumeRealisation|raw }}</td>
+                <td>{{ realisation.fonctionnaliteRealisation|raw }}</td>
+                <td>{{ realisation.siteRealistation }}</td>
+                <td>{{ realisation.gitRealisation }}</td>
+
+                <td>
+                    <a href="{{ path('realisation_show', {'id': realisation.id}) }}">show</a>
+                    <a href="{{ path('realisation_edit', {'id': realisation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('realisation_new') }}">Create new</a>
+{% endblock %}
