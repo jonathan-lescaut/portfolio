@@ -10,11 +10,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 
 #[Route('/presentation')]
+#[IsGranted("ROLE_ADMIN")]
 class PresentationController extends AbstractController
 {
     #[Route('/', name: 'presentation_index', methods: ['GET'])]
@@ -73,12 +75,30 @@ class PresentationController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'presentation_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Presentation $presentation, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Presentation $presentation, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(PresentationType::class, $presentation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $photo = $form->get('photo_presentation')->getData();
+            if ($photo) {
+            $originalFilename = pathinfo($photo->getClientOriginalName(),
+            PATHINFO_FILENAME);
+
+            $safeFilename = $slugger->slug($originalFilename);
+            $newFilename = $safeFilename.'-'.uniqid().'.'.$photo->guessExtension();
+
+            try {
+            $photo->move(
+            $this->getParameter('photos_directory'),
+            $newFilename
+            );
+            } catch (FileException $e) {}
+                
+            $presentation->setPhotoPresentation($newFilename);
+        }
             $entityManager->flush();
 
             return $this->redirectToRoute('presentation_index', [], Response::HTTP_SEE_OTHER);

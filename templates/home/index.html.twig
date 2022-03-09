@@ -6,8 +6,8 @@
 {% block body %}
 	<!-- ============================================= NAVBAR ==================================================== -->
 	<header class="accueil" id="accueil">
-		<nav class="navbar fixed-top navbar-expand-lg">
-			<a class="navbar-brand" href="#">Jonathan Lescaut</a>
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+			<a class="navbar-brand nom" href="#"><span>Jonathan</span>Lescaut</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -17,7 +17,7 @@
 						<a class="nav-item mr-2" href="#">Accueil</a>
 					</li>
 					<li class="nav-link">
-						<a class="nav-item mr-2" href="#presentation">À propos</a>
+						<a class="nav-item mr-2" href="#startchange">À propos</a>
 					</li>
 					<li class="nav-link">
 						<a class="nav-item mr-2" href="#competence">Compétences</a>
@@ -32,9 +32,9 @@
 						<a class="nav-item mr-2" href="#contact">Contact</a>
 					</li>
 					<li class="nav-link">
-					{% for contact in contact %}
-						<a class="nav-item mr-2" href="{{ asset('uploads/brochures/' ~ contact.getCvContact) }}">Voir mon CV</a>
-					{% endfor %}
+						{% for contact in contact %}
+							<a class="btn btn-secondary nav-item mr-2" href="{{ asset('uploads/brochures/' ~ contact.getCvContact) }}">Voir mon CV</a>
+						{% endfor %}
 
 					</li>
 				</ul>
@@ -42,15 +42,12 @@
 		</nav>
 		<!-- ============================================= TITRE ==================================================== -->
 		<div class="container pageTitre">
+
 			<div class="row">
-				<div
-					class="col-md-12 text-center titre d-flex flex-column justify-content-center">
-					{# <h1>
-																				<span>web
-																				</span>développeur</h1>
-																			<h1>junior</h1> #}
+				<div class="col-md-12 text-center titre ">																																																																											
 					{% for titre in titre %}
 						<h1>{{ titre.getNomTitre() }}</h1>
+
 					{% endfor %}
 
 				</div>
@@ -59,8 +56,9 @@
 	</header>
 	<!-- ============================================= PRESENTATION ==================================================== -->
 
-	<section id="presentation" class="presentation">
+	<section id="startchange" class="presentation">
 		<h2 class="titrePresentation">présentation</h2>
+
 		<div class="container">
 			<div class="row">
 
@@ -69,9 +67,10 @@
 					<div class="col-lg-6 textePresentation">
 						{{presentation.getcontenuPresentation()|raw}}
 					</div>
+
 					<div class="col-lg-1"></div>
-					<div class="col-lg-5 align-self-center">
-						<img src="{{ asset('uploads/photos/' ~ presentation.getPhotoPresentation) }}" width="100">
+					<div class="col-lg-5 blocPhoto">
+						<img class="photoPresentation" src="{{ asset('uploads/photos/' ~ presentation.getPhotoPresentation) }}" width="100">
 					</div>
 				{% endfor %}
 
@@ -85,7 +84,7 @@
 			<div class="row blocRea">
 				<div class="col-md-4 "></div>
 				<div class="col-md-4 blocRealisation">
-					<a href="#">Voir mes réalisations</a>
+					<a class="lienRealisation" href="#portFolio">Voir mes réalisations</a>
 				</div>
 				<div class="col-md-4"></div>
 			</div>
@@ -98,13 +97,13 @@
 
 
 	<section class="presentation">
-		<h2 class="titreTechnologies">Technologies</h2>
+		<h2 class="titreTechnologies">Mes technologies</h2>
 		<div class="container">
 			<div class="row blocTechno">
 
-			{% for technologie in technologie %}
-				{{technologie.getLogoTechologie|raw}}
-			{% endfor %}
+				{% for technologie in technologie %}
+					{{technologie.getLogoTechologie|raw}}
+				{% endfor %}
 
 
 			</div>
@@ -114,8 +113,8 @@
 	<!-- ========================================== CAROUSSEL ================================================= -->
 
 
-	<div class="container-fluid blocCarousselProduct meteoCarou">
-		{# <div class="row">API OpenWeather</div> #}
+	<div
+		class="container-fluid blocCarousselProduct meteoCarou">
 		<div class="row">
 			<ul id="c" class="carousselProduct liCarousselProduct">
 				{% for element in weather %}
@@ -206,32 +205,24 @@
 	<!-- ========================================== COMPETENCES ================================================= -->
 
 	<section id="competence" class="competences">
-
-		<h2>Compétences</h2>
-
+		<h2>Mes compétences en développement</h2>
 		<div class="container">
 			<div class="row">
-
 				<div class="col-md-3"></div>
 				<div class="col-md-6">
 					<img src="{{asset('uploads/competence.jpg') }}" alt="competences">
 				</div>
 				<div class="col-md-3"></div>
 			</div>
-			<div class="row">
+			<div class="row sectionCompetence">
 				{% for competence in competence %}
-
 					<div class="col-md-4 blocCompetence">
 						<div class="row titreCompetence">{{competence.gettitreCompetence}}</div>
 						<div class="row texteCompetence">{{competence.getcontenuCompetence}}</div>
 					</div>
 				{% endfor %}
-
 			</div>
-
-
 		</div>
-
 	</section>
 
 	<!-- ========================================== PORTFOLIO ================================================= -->
@@ -239,99 +230,116 @@
 
 	<section id="portFolio" class="portFolio">
 		<h2>Portfolio</h2>
-		<h3>Mes réalisations</h3>
-
+		<h3>Quelques une des mes réalisations</h3>
 		<div class="container-fluid">
-
-			<div class="row">
+			<div class="row containerRealisation">
 				{% for realisation in realisation %}
-
 					<div class="col-md-6 blocRea">
-						<div class="imgRealisation">
-							<a href="{{realisation.getSiteRealistation}}"><img src="{{asset('uploads/photos/' ~ realisation.getImageRealisation) }}" alt=""></a>
+						<a target="_blank" href="{{realisation.getSiteRealistation}}">
+							<div class="imgRealisation">
+								<img src="{{asset('uploads/photos/' ~ realisation.getImageRealisation) }}" alt=""></a>
 							<div class="overlay">
-
 								<div class="resume">
 									{{realisation.getResumeRealisation|raw}}
 								</div>
 								<div class="fonctionnalite">
-
 									{{realisation.getFonctionnaliteRealisation|raw}}
 								</div>
-
+								<div>
+									<a target="_blank" href="{{realisation.getSiteRealistation}}" class="lienSite">
+										<span>Lien vers le site</span>
+										<i class="fab fa-internet-explorer"></i>
+										<i class="fab fa-edge"></i>
+										<i class="fab fa-chrome"></i>
+										<i class="fab fa-firefox"></i>
+										<i class="fab fa-opera"></i>
+										<i class="fab fa-safari"></i>
+									</a>
+									<a href="{{realisation.getGitRealisation}}" class="lienGit">
+										<i class="fab fa-github git1"></i>
+										Voir le code sur mon gitHub
+										<i class="fab fa-github git2"></i>
+									</a>
+								</div>
+							</div>
+							<div class="titre-portfolio">
+								{{realisation.getTitreRealisation}}
 							</div>
 						</div>
-
-					</div>
-				{% endfor %}
-			</div>
-
+					</a>
+				</div>
+			{% endfor %}
 		</div>
+	</div>
+</section>
 
-	</section>
+<!-- ========================================== PARCOURS ================================================= -->
 
-	<!-- ========================================== PARCOURS ================================================= -->
-
-	<section id="parcours" class="parcours">
-		<h2>Mon parcours</h2>
-
-		<div class="timeline2">
-			<ul>
-				{% for parcours in parcours %}
-
-					<li>
-						<div>
-							<time>{{parcours.getTitreParcours}}</time>
-							{{parcours.getContenuParcours}}
-						</div>
-						<span class="time">
-							<span>{{parcours.getDateParcours}}</span>
-							<span>{{parcours.getDureeParcours}}</span>
-
-						</span>
-					</li>
-				{% endfor %}
-			</ul>
-		</div>
-
-
-	</section>
-
-	<section id="contact" class="contact">
-
-		<h2>CONTACTS</h2>
-		{% for contact in contact %}
-			<h3>{{ contact.getTitreContact}}</h3>
-			<p>{{ contact.getContenuContact}}</p>
-			<div class="bloc-cv">
-
-				<a href="{{ asset('uploads/brochures/' ~ contact.getCvContact) }}">Voir mon CV
-					<img class="image-cv" src="{{asset('uploads/photos/' ~ contact.getCvImageContact) }}" alt="Mon cv"></a>
-			</div>
-
-			<p>{{ contact.getMailContact}}</p>
-		{% endfor %}
+<section id="parcours" class="parcours">
+	<h2>Mon 
+	<div class="timeline2">
 		<ul>
-			{% if (is_granted('ROLE_USER')) %}
-
-				<li class="nav-link">
-					<a class="nav-item mr-2" href="{{'/admin'}}">Administration</a>
+			{% for parcours in parcours %}
+				<li>
+					<div>
+						<time>{{parcours.getTitreParcours}}</time>
+						{{parcours.getContenuParcours}}
+					</div>
+					<span class="time">
+						<span>{{parcours.getDateParcours}}</span><br>
+						<span>{{parcours.getDureeParcours}}</span>
+					</span>
 				</li>
-				<li class="nav-link">
-					<a class="nav-item mr-2" href="{{'/login'}}">Déconnection</a>
-				</li>
-			{% else %}
-
-				<li class="nav-link">
-					<a class="nav-item mr-2" href="{{'/login'}}">Se connecter</a>
-				</li>
-				<li class="nav-link">
-					<a class="nav-item mr-2" href="{{'/register'}}">Inscription</a>
-				</li>
-
-			{% endif %}
+			{% endfor %}
 		</ul>
+	</div>
+</section>
 
-	</section>
+<section id="contact" class="contact">
+	<h2>CONTACTS</h2>
+	{% for contact in contact %}
+		<div class="typewriter">
+			<h3>{{ contact.getTitreContact}}</h3>
+		</div>
+		<div class="contenuContact">{{ contact.getContenuContact|raw}}</div>
+		<div class="bloc-cv">
+			<a class="lienCv" href="{{ asset('uploads/brochures/' ~ contact.getCvContact) }}">Mon CV
+				<img class="image-cv" src="{{asset('uploads/photos/' ~ contact.getCvImageContact) }}" alt="Mon cv"></a>
+		</div>
+		<a class="mailContact" href="mailto:lescaut.j@gmail.com">{{ contact.getMailContact}}</a>
+	{% endfor %}
+	<div class="reseaux">
+		<a target="_blank" href="https://www.linkedin.com/in/jonathan-lescaut-21a958194/">
+			<i class="fab fa-linkedin"></i>
+		</a>
+		<a target="_blank" href="https://github.com/jonathan-lescaut">
+			<i class="fab fa-github"></i>
+		</a>
+	</div>
+	<div id="scrollUp">
+		<a href="#top"><img class="imgFleche" src="{{asset('uploads/to_top.png')}}"/></a>
+	</div>
+	<p class="rgpd">© Lescaut Jonathan, Tous droits réservés.</p>
 
-{% endblock %}
+	<ul>
+																{% if (is_granted('ROLE_USER')) %}
+														
+																	<li class="nav-link">
+																		<a class="nav-item mr-2" href="{{'/admin'}}">Administration</a>
+																	</li>
+																	<li class="nav-link">
+																		<a class="nav-item mr-2" href="{{'/logout'}}">Déconnection</a>
+																	</li>
+																{% else %}
+														
+																	<li class="nav-link">
+																		<a class="nav-item mr-2" href="{{'/login'}}">Se connecter</a>
+																	</li>
+																	<li class="nav-link">
+																		<a class="nav-item mr-2" href="{{'/register'}}">Inscription</a>
+																	</li>
+														
+																{% endif %}
+															</ul>
+
+</section>{% endblock %}

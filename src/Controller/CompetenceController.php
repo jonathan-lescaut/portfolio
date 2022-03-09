@@ -6,12 +6,14 @@ use App\Entity\Competence;
 use App\Form\CompetenceType;
 use App\Repository\CompetenceRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/competence')]
+#[IsGranted("ROLE_ADMIN")]
 class CompetenceController extends AbstractController
 {
     #[Route('/', name: 'competence_index', methods: ['GET'])]

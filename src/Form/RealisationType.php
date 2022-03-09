@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Realisation;
+use App\Entity\Technologie;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -44,12 +46,20 @@ class RealisationType extends AbstractType
             ->add('git_realisation')->add('git_realisation', TextType::class, [
                 'label' => 'Git réalisation'
             ])
+            ->add('technologies', EntityType::class, [
+                'choice_label' => 'nom_techologie',
+                'class' => Technologie::class,
+                'expanded' =>true,
+                'multiple' =>true,
+                'required' =>true
+            ])
 
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
+
         $resolver->setDefaults([
             'data_class' => Realisation::class,
         ]);

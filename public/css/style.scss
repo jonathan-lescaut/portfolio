@@ -48,7 +48,7 @@ body{
   padding: 0;
   box-sizing: border-box;
   width: 100%;
-  background-color: rgb(87, 87, 87);
+  background-color: #685c50;
 }
 a{
     text-decoration: none;
@@ -64,18 +64,33 @@ a{
     height: 100vh;
     background-position: center;
     background-size: cover;
+	a span{
+		color: #363636;
+		-webkit-text-stroke: .08px white;
+	}
+}
+
+.navbar-nav{
+	align-items: center;
+}
+.show{
+	background-color: rgba(0, 0, 0, 0.822) ;
 }
 .navbar {
     color: white;
     padding-top: 20px;
     padding-bottom: 20px;
+	font-family: 'League Spartan', sans-serif;
+	.nom{
+		font-size: 1.5rem;
+	}
+
     a {
         color: white ;
          font-weight: 600;
          font-size: 1rem;
          text-transform: uppercase;
          font-style: normal;
-         letter-spacing: 1px;
          position: relative;
     }
     li {
@@ -98,12 +113,17 @@ a{
          a:hover::after {
              transform: scaleX(1);
          }
-     }
-
-    .navbar-toggler-icon {
-        color: white !important;
-    }
- }
+		}
+		
+		
+	}
+	.navbar-toggler-icon{
+		background-color: black;
+	}
+	.navbar-dark .navbar-toggler {
+		color: rgb(255, 255, 255);
+		border-color: rgb(255, 255, 255);
+	}
  
  .navbar-default {
      background: black !important;
@@ -121,9 +141,36 @@ a{
          font-family: arial; color: white;
      }
  }
+ .titre{
+	display: flex;
+	align-items: center;
+ }
+ @media (max-width: 1145px){
+	 .navbar-expand-md .navbar-nav .nav-link {
+		 padding-right: 0.1rem;
+		 padding-left: 0.1rem;
+	 }
+ }
+ @media (max-width: 1045px){
+	.navbar-expand-md .navbar-nav .nav-link a {
+		font-size: .8rem;
+	}
+}
+@media (max-width: 930px){
+	.navbar .nom {
+		font-size: 1rem;
+	}
+}
+@media (max-width: 833px){
+	.navbar-expand-md .navbar-nav .nav-link a {
+		font-size: .6rem;
+	}
+}
 
  @media (max-width: 811px) { 
-	.text-center{
+	.accueil .pageTitre .text-center{
+		padding-right: 0px;
+		padding-left: 0px;
 		h1{
 			font-size: 3rem;
 		}
@@ -140,6 +187,9 @@ a{
 		justify-content: center;
 		align-items: center;
 	}
+	.navbar-toggler{
+		background-color: black;
+	}
 	
   }
 
@@ -150,13 +200,29 @@ a{
 .presentation{
     background-color: #685c50;
     padding-top: 2em;
+	.photoPresentation{
+		width: 70%;
+	}
+	.blocPhoto{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 2em;
+	}
 }
+
+
+
+
 .titrePresentation, .titreTechnologies{
     margin-bottom: 1em;
+	font-family: 'League Spartan', sans-serif;
+
 }
 h2 {
 	color: white;
-	font-style: Black; 
+	font-family: 'League Spartan', sans-serif;
 	text-transform: uppercase;
 	font-size: 40px;
 	position: relative;
@@ -185,6 +251,9 @@ h2:hover::after {
     text-align: justify;
     color: white;
     padding-bottom: 2em;
+	p{
+		font-family: 'League Spartan', sans-serif;
+	}
 }
  // ============================================================================================================================
                                                 // BOUTON REALISATION
@@ -200,10 +269,27 @@ h2:hover::after {
 
     .blocRealisation{
         text-align: center;
-        border: white 2px solid;
+        border: white 5px solid;
         padding: .8em;
         font-size: 2rem;
+		.lienRealisation{
+			text-transform: uppercase;
+			font-weight: bold;
+		}
+		.lienRealisation:hover{
+			text-decoration: none;
+			color: #685c50;
+
+		}
     }
+	.blocRealisation:hover{
+		border:#685c50 5px solid;
+	}
+}
+@media (max-width: 912px){
+	.boutonRealisation .blocRealisation{
+        font-size: 1.7rem;
+	}
 }
  // ============================================================================================================================
                                                 // TECHNOLOGIES
@@ -214,6 +300,11 @@ h2:hover::after {
     justify-content: space-between;
     padding-bottom: 4em;
 }
+@media (max-width: 912px){
+	.blocTechno{
+		justify-content: center;
+	}
+}
  // ============================================================================================================================
                                                 // caroussel weather
 // ============================================================================================================================
@@ -221,13 +312,13 @@ ul {
     list-style-type: none;
     }
 .blocCarousselProduct{
-    height: 40vh;
+    height: 45vh;
     width: 100%;
     list-style-type:none;
 }
 .carousselProduct {
     position: absolute;
-    width: 96%;
+    width: 94%;
     list-style-type:none;
     display: flex;
     margin-left: 4em;
@@ -246,6 +337,10 @@ ul {
     color: white;
     .pImgCaroussel{
         text-transform: uppercase;
+		font-weight: bold;
+		background-color: rgba(255, 255, 255, 0.26);
+		border-radius: 10px;
+		padding: 5px;
     }
 }
 .active {
@@ -262,6 +357,23 @@ ul {
         height: 15vh;
     }
 }
+
+@media (max-width: 912px){
+	
+	.blocCarousselProduct .carousselProduct {
+		width: 100%;
+		margin-left: 0px;
+	}
+	.liCaroussel{
+		width: 21%;
+	}
+	.blocCarousselProduct {
+		height: 40vh;
+	}
+
+}
+
+
 
 // @media (max-width: 807px){
 //     .liCaroussel, .pImgCaroussel {
@@ -310,6 +422,15 @@ ul {
 
 .competences{
     color: white;
+	font-family: 'League Spartan', sans-serif;
+	h2{
+		margin-top: 2em;
+	}
+}
+.sectionCompetence{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 4em;
 }
 
 .competences img{
@@ -325,15 +446,92 @@ ul {
     text-transform: uppercase;
     font-weight: bold;
     margin: 1em 0 1em 0;
+    display: flex;
+    justify-content: center;
+	font-family: 'League Spartan', sans-serif;
 }
+
 .texteCompetence{
     margin: 1em;
+	text-align: center;
+}
+.blocCompetence{
+	border: solid white 5px;
+	border-radius: 20px;
+	margin: 3px;
 }
  // ============================================================================================================================
                                                 // PORTFOLIO
 // ============================================================================================================================
+.portFolio{
+	h3{
+		font-family: 'League Spartan', sans-serif;
+		text-align: center;
+		margin-top: 1em;
+		color: white;
+	}
+	h2{
+		font-family: 'League Spartan', sans-serif;
+	}
+	.containerRealisation{
+		display: flex;
+		justify-content: center;
+	}
+	.titre-portfolio{
+		background-color: rgba(0, 0, 0, 0.712);
+		color: white;
+		font-family: 'League Spartan', sans-serif;
+		font-weight: bold;
+		text-align: center;
+		font-size: 2.5rem;
 
+	}
+	.lienSite{
+		font-size: 2rem;
+		background-color: #fff;
+		width: 100%;
+		text-align: center;
+		color: black;
+		font-weight: bold;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.lienSite:hover{
+			background-color: rgb(0, 0, 0) ;
+			color: white;	
+		}
+		span{
+			margin-right: 20px;
 
+		}
+		i{
+			margin-right: 10px;
+		}
+	}
+	.lienGit{
+		font-size: 2rem;
+		background-color: #fff;
+		width: 100%;
+		text-align: center;
+		color: royalblue;
+		font-weight: bold;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.git1, .git2{
+			font-size: 2rem;
+		}
+		.git1{
+			margin-right: 3em;
+		}
+		.git2{
+			margin-left: 3em;
+		}
+	}
+	.lienGit:hover{
+		background-color: royalblue
+	}
+}
 	.imgRealisation{
 		width: 100%;
 		margin-top: 1em;
@@ -359,12 +557,118 @@ ul {
 		transition: 1s;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: space-between;
+		a:hover{
+			text-decoration: none;
+			text-transform: none;
+			color: white;
+			background-color: #685c50;
+
+		}
 	}
 	.imgRealisation:hover .overlay{
 		transform: scale(1) ;
 	}
+	.portFolio .container-fluid .containerRealisation .blocRea .overlay .resume p:first-child{
+		background-color: white;
+		color: black;
+		width: 100%;
+		text-align: center;
+	}
+	.portFolio .container-fluid .containerRealisation .blocRea .overlay .resume p:nth-child(2){
+		background-color: rgba(255, 255, 255, 0.219);
+		border-radius: 5px;
+		border: solid white 5px;
+		color: white;
+		width: 100%;
+		text-align: center;
+	}
+	.portFolio .container-fluid .containerRealisation .blocRea .overlay .resume {
+		font-size: 15px;
+	}
+	.portFolio .container-fluid .containerRealisation .blocRea .overlay .fonctionnalite p{
+		font-size: 15px; 
+		text-align: center;
+		font-weight: bold;
+	}
+	@media screen and (max-width: 912px) {
 
+		.imgRealisation img{
+				height: 15vh;
+			}
+	}
+	
+	@media screen and (max-width: 1497px) {
+		.portFolio .container-fluid .containerRealisation .blocRea .overlay .resume p u{
+			font-size: 15px;
+			font-weight: bold;
+		}
+		.portFolio .container-fluid .containerRealisation .blocRea .overlay .resume p{
+			font-size: 12px;
+			text-align: center;
+		}
+		.portFolio .container-fluid .containerRealisation .blocRea .overlay .fonctionnalite p{
+			font-size: 12px; 
+			text-align: center;
+		}
+	}
+
+	@media screen and (max-width: 1410px) {
+		.portFolio .lienGit{
+			font-size: 1rem;
+		}
+		.portFolio .lienSite{
+			font-size: 1rem;
+		}
+	}
+
+	@media screen and (max-width: 1267px) {
+	.portFolio .titre-portfolio{
+		font-size: 1.5rem;
+	}
+}
+@media screen and (max-width: 912px) {
+	.portFolio .titre-portfolio{
+		font-size: 1.2rem;
+	}
+	.overlay{
+		display: none;
+	}
+}
+@media screen and (max-width: 414px) {
+	.overlay{
+		display: none;
+	}
+	.portFolio .lienGit{
+		display: none;
+	}
+	.portFolio .lienSite{
+		display: none;
+	}
+	.imgRealisation img{
+		height: 25vh;
+	}
+	.portFolio .container-fluid .containerRealisation .blocRea .overlay .resume{
+		display: none;
+	}
+	.portFolio .lienGit{
+		font-size: .8rem;
+		.git1, .git2{
+			font-size: 1.5rem;
+		}
+	}
+	.portFolio .lienSite{
+		font-size: .8rem;
+	}
+	.portFolio .lienSite{
+		font-size: .8rem;
+	}
+	.overlay{
+		width: 92%;
+		height: 88%;
+
+	}
+}
 
 
 
@@ -373,7 +677,10 @@ ul {
                                                 // PARCOURS TIMELINE
 // ============================================================================================================================
 
-
+.parcours h2{
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
 
 /* TIMELINE
 			–––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -429,19 +736,19 @@ ul {
 			}
 
 			 
-			.timeline2 ul li::after {
-			  content: '';
-			  position: absolute;
-			  left: 50%;
-			  top: 30px; /* bottom: 0;  bottom: 50%;=center top: 30px;=top  */ 
-			  transform: translateX(-55%);/* transform: translateX(-50%); */
-			  -webkit-transform: translateX(-55%);
-			  width: 30px;
-			  height: 30px;
-			  border-radius: 50%;
-			  background: inherit;
-			  border: 2px solid #03A9F4;
-			}
+			// .timeline2 ul li::after {
+			//   content: '';
+			//   position: absolute;
+			//   left: 50%;
+			//   top: 30px; /* bottom: 0;  bottom: 50%;=center top: 30px;=top  */ 
+			//   transform: translateX(-55%);/* transform: translateX(-50%); */
+			//   -webkit-transform: translateX(-55%);
+			//   width: 30px;
+			//   height: 30px;
+			//   border-radius: 50%;
+			//   background: inherit;
+			//   border: 2px solid #03A9F4;
+			// }
 
 			.timeline2 ul li div {
 			  position: relative;
@@ -628,18 +935,34 @@ ul {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	h2{
+		margin-top: 2em;
+	}
 	a{
 		display: flex;
 		text-decoration: none;
 		flex-direction: column;
 		align-items: center;
 	}
+	.lienCv{
+		text-transform: uppercase;
+		font-weight: bold;
+
+	}
+	.lienCv:hover{
+		text-decoration: none;
+		color: royalblue;
+	}
+	.bloc-cv{
+		margin-top: 2em;
+		margin-bottom: 2em;
+	}
 	.image-cv{
-		width: 10%;
+		width: 20%;
 		transition: transform .5s;
 	}
 	.image-cv:hover{
-		transform: scale(6);
+		transform: scale(4);
 	}
 	p{
 		color: white;
@@ -647,6 +970,87 @@ ul {
 	}
 	h3{
 		margin-top: 1.5em;
+		margin-bottom: 1.5em;
+
+		color: white;
+	}
+	.mailContact{
+		font-size: 2rem;
+		margin-top: 1em;
+		margin-bottom: 1em;
+		padding: 5px;
+	}
+	.mailContact:hover{
+		background-color: royalblue;
+		border-radius: 10px;
+		color: white;
+		
+
+	}
+	.reseaux{
+		display: flex;
+		font-size: 6rem;
+		width: 30%;
+		justify-content: space-around;
+	}
+	@media screen and (max-width: 414px) {
+		.reseaux{
+			width: 70%;
+		}
+	}
+	.contenuContact{
+		text-align: center;
+	}
+	.rgpd{
+		background-color: black;
+		color: white;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		margin-top: 1em;
+		padding: 10px;
+		margin-bottom: 0px;
 	}
 	
 }
+
+.typewriter{
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+.typewriter h3 {
+    display: flex;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid rgb(0, 0, 0); /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0px; /* Gives that scrolling effect as the typing happens */
+    animation: 
+      typing 6s steps(50, end),
+      blink-caret .5s infinite;
+      padding-left: 24px;
+      animation-iteration-count: infinite;
+}
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 105% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: rgb(0, 82, 4) }
+  }
+  @media screen and (max-width: 414px) {
+	  .typewriter h3{
+		  font-size: 1rem;
+	  }
+  }
+
+  #scrollUp {
+	width: 50%;
+  }
+  .imgFleche{
+	  width: 50px;
+  }

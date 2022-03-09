@@ -1,3 +1,21 @@
+$(document).ready(function(){       
+	var scroll_start = 0;
+	var startchange = $('#startchange');
+	var offset = startchange.offset();
+	  $(document).scroll(function() { 
+	   scroll_start = $(this).scrollTop();
+	   if(scroll_start > offset.top) {
+		 $(".navbar").addClass("navbar-default");
+		 $(".navbar").removeClass("pt-5");
+	   } else {
+		 $('.navbar').removeClass("navbar-default");
+	   }
+	 });
+   });
+
+
+// Open Weather ============================================
+
 
 var timer = 4000;
 
@@ -113,5 +131,19 @@ var max = $('#c > li').length;
 	   })();
 
 // ===============================================================================================
+//  bouton footer remonter en haut
+
+jQuery(function(){
+	$(function () {
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 200 ) { 
+				$('#scrollUp').css('right','10px');
+			} else { 
+				$('#scrollUp').removeAttr( 'style' );
+			}
+
+		});
+	});
+});
 
 		  

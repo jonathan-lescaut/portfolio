@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Contact;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,7 +19,7 @@ class ContactType extends AbstractType
             ->add('titre_contact')->add('titre_contact', TextType::class, [
                 'label' => 'Titre'
             ])
-            ->add('contenu_contact')->add('contenu_contact', TextType::class, [
+            ->add('contenu_contact', CKEditorType::class, [
                 'label' => 'Contenu'
             ])
             ->add('cvPdf', FileType::class, [

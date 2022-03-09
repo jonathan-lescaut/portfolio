@@ -10,10 +10,16 @@ use App\Repository\PresentationRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class AdminController extends AbstractController
 {
-    #[Route('/admin', name: 'admin')]
+
+
+ 
+    #[Route('/admin', name: 'admin', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function index(CompetenceRepository $competenceRepository, ContactRepository $contactRepository, ParcoursRepository $parcoursRepository, TitreRepository $titreRepository, PresentationRepository $presentationRepository): Response
     {
         return $this->render('admin/index.html.twig', [

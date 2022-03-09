@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RealisationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -46,6 +48,16 @@ class Realisation
      * @ORM\Column(type="string", length=255)
      */
     private $git_realisation;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Technologie::class, mappedBy="Realisation")
+     */
+    private $technologies;
+
+    public function __construct()
+    {
+        $this->technologies = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +132,33 @@ class Realisation
     public function setGitRealisation(string $git_realisation): self
     {
         $this->git_realisation = $git_realisation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Technologie>
+     */
+    public function getTechnologies(): Collection
+    {
+        return $this->technologies;
+    }
+
+    public function addTechnology(Technologie $technology): self
+    {
+        if (!$this->technologies->contains($technology)) {
+            $this->technologies[] = $technology;
+            $technology->addRealisation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTechnology(Technologie $technology): self
+    {
+        if ($this->technologies->removeElement($technology)) {
+            $technology->removeRealisation($this);
+        }
 
         return $this;
     }

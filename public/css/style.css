@@ -44,7 +44,7 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 100%;
-  background-color: #575757;
+  background-color: #685c50;
 }
 
 a {
@@ -60,10 +60,30 @@ a {
   background-size: cover;
 }
 
+.accueil a span {
+  color: #363636;
+  -webkit-text-stroke: .08px white;
+}
+
+.navbar-nav {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.show {
+  background-color: rgba(0, 0, 0, 0.822);
+}
+
 .navbar {
   color: white;
   padding-top: 20px;
   padding-bottom: 20px;
+  font-family: 'League Spartan', sans-serif;
+}
+
+.navbar .nom {
+  font-size: 1.5rem;
 }
 
 .navbar a {
@@ -72,7 +92,6 @@ a {
   font-size: 1rem;
   text-transform: uppercase;
   font-style: normal;
-  letter-spacing: 1px;
   position: relative;
 }
 
@@ -104,8 +123,13 @@ a {
           transform: scaleX(1);
 }
 
-.navbar .navbar-toggler-icon {
-  color: white !important;
+.navbar-toggler-icon {
+  background-color: black;
+}
+
+.navbar-dark .navbar-toggler {
+  color: white;
+  border-color: white;
 }
 
 .navbar-default {
@@ -133,8 +157,46 @@ a {
   color: white;
 }
 
+.titre {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 1145px) {
+  .navbar-expand-md .navbar-nav .nav-link {
+    padding-right: 0.1rem;
+    padding-left: 0.1rem;
+  }
+}
+
+@media (max-width: 1045px) {
+  .navbar-expand-md .navbar-nav .nav-link a {
+    font-size: .8rem;
+  }
+}
+
+@media (max-width: 930px) {
+  .navbar .nom {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 833px) {
+  .navbar-expand-md .navbar-nav .nav-link a {
+    font-size: .6rem;
+  }
+}
+
 @media (max-width: 811px) {
-  .text-center h1 {
+  .accueil .pageTitre .text-center {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .accueil .pageTitre .text-center h1 {
     font-size: 3rem;
   }
   .liCaroussel .blocImgCaroussel {
@@ -158,6 +220,9 @@ a {
         -ms-flex-align: center;
             align-items: center;
   }
+  .navbar-toggler {
+    background-color: black;
+  }
 }
 
 .presentation {
@@ -165,13 +230,35 @@ a {
   padding-top: 2em;
 }
 
+.presentation .photoPresentation {
+  width: 70%;
+}
+
+.presentation .blocPhoto {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 2em;
+}
+
 .titrePresentation, .titreTechnologies {
   margin-bottom: 1em;
+  font-family: 'League Spartan', sans-serif;
 }
 
 h2 {
   color: white;
-  font-style: Black;
+  font-family: 'League Spartan', sans-serif;
   text-transform: uppercase;
   font-size: 40px;
   position: relative;
@@ -212,6 +299,10 @@ h2:hover::after {
   padding-bottom: 2em;
 }
 
+.textePresentation p {
+  font-family: 'League Spartan', sans-serif;
+}
+
 .boutonRealisation {
   background-image: url(../uploads/clavier.jpg);
   height: 25vh;
@@ -227,9 +318,29 @@ h2:hover::after {
 
 .boutonRealisation .blocRealisation {
   text-align: center;
-  border: white 2px solid;
+  border: white 5px solid;
   padding: .8em;
   font-size: 2rem;
+}
+
+.boutonRealisation .blocRealisation .lienRealisation {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.boutonRealisation .blocRealisation .lienRealisation:hover {
+  text-decoration: none;
+  color: #685c50;
+}
+
+.boutonRealisation .blocRealisation:hover {
+  border: #685c50 5px solid;
+}
+
+@media (max-width: 912px) {
+  .boutonRealisation .blocRealisation {
+    font-size: 1.7rem;
+  }
 }
 
 .blocTechno {
@@ -242,19 +353,27 @@ h2:hover::after {
   padding-bottom: 4em;
 }
 
+@media (max-width: 912px) {
+  .blocTechno {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
 ul {
   list-style-type: none;
 }
 
 .blocCarousselProduct {
-  height: 40vh;
+  height: 45vh;
   width: 100%;
   list-style-type: none;
 }
 
 .carousselProduct {
   position: absolute;
-  width: 96%;
+  width: 94%;
   list-style-type: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -278,6 +397,10 @@ ul {
 
 .liCaroussel .pImgCaroussel {
   text-transform: uppercase;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.26);
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .active {
@@ -296,6 +419,19 @@ ul {
   height: 15vh;
 }
 
+@media (max-width: 912px) {
+  .blocCarousselProduct .carousselProduct {
+    width: 100%;
+    margin-left: 0px;
+  }
+  .liCaroussel {
+    width: 21%;
+  }
+  .blocCarousselProduct {
+    height: 40vh;
+  }
+}
+
 .meteoCarou {
   background-image: url(../uploads/meteo.jpg);
   background-size: cover;
@@ -304,6 +440,21 @@ ul {
 
 .competences {
   color: white;
+  font-family: 'League Spartan', sans-serif;
+}
+
+.competences h2 {
+  margin-top: 2em;
+}
+
+.sectionCompetence {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 4em;
 }
 
 .competences img {
@@ -320,10 +471,118 @@ ul {
   text-transform: uppercase;
   font-weight: bold;
   margin: 1em 0 1em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: 'League Spartan', sans-serif;
 }
 
 .texteCompetence {
   margin: 1em;
+  text-align: center;
+}
+
+.blocCompetence {
+  border: solid white 5px;
+  border-radius: 20px;
+  margin: 3px;
+}
+
+.portFolio h3 {
+  font-family: 'League Spartan', sans-serif;
+  text-align: center;
+  margin-top: 1em;
+  color: white;
+}
+
+.portFolio h2 {
+  font-family: 'League Spartan', sans-serif;
+}
+
+.portFolio .containerRealisation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.portFolio .titre-portfolio {
+  background-color: rgba(0, 0, 0, 0.712);
+  color: white;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.portFolio .lienSite {
+  font-size: 2rem;
+  background-color: #fff;
+  width: 100%;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.portFolio .lienSite .lienSite:hover {
+  background-color: black;
+  color: white;
+}
+
+.portFolio .lienSite span {
+  margin-right: 20px;
+}
+
+.portFolio .lienSite i {
+  margin-right: 10px;
+}
+
+.portFolio .lienGit {
+  font-size: 2rem;
+  background-color: #fff;
+  width: 100%;
+  text-align: center;
+  color: royalblue;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.portFolio .lienGit .git1, .portFolio .lienGit .git2 {
+  font-size: 2rem;
+}
+
+.portFolio .lienGit .git1 {
+  margin-right: 3em;
+}
+
+.portFolio .lienGit .git2 {
+  margin-left: 3em;
+}
+
+.portFolio .lienGit:hover {
+  background-color: royalblue;
 }
 
 .imgRealisation {
@@ -361,14 +620,131 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.overlay a:hover {
+  text-decoration: none;
+  text-transform: none;
+  color: white;
+  background-color: #685c50;
 }
 
 .imgRealisation:hover .overlay {
   -webkit-transform: scale(1);
           transform: scale(1);
+}
+
+.portFolio .container-fluid .containerRealisation .blocRea .overlay .resume p:first-child {
+  background-color: white;
+  color: black;
+  width: 100%;
+  text-align: center;
+}
+
+.portFolio .container-fluid .containerRealisation .blocRea .overlay .resume p:nth-child(2) {
+  background-color: rgba(255, 255, 255, 0.219);
+  border-radius: 5px;
+  border: solid white 5px;
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+
+.portFolio .container-fluid .containerRealisation .blocRea .overlay .resume {
+  font-size: 15px;
+}
+
+.portFolio .container-fluid .containerRealisation .blocRea .overlay .fonctionnalite p {
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 912px) {
+  .imgRealisation img {
+    height: 15vh;
+  }
+}
+
+@media screen and (max-width: 1497px) {
+  .portFolio .container-fluid .containerRealisation .blocRea .overlay .resume p u {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .portFolio .container-fluid .containerRealisation .blocRea .overlay .resume p {
+    font-size: 12px;
+    text-align: center;
+  }
+  .portFolio .container-fluid .containerRealisation .blocRea .overlay .fonctionnalite p {
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 1410px) {
+  .portFolio .lienGit {
+    font-size: 1rem;
+  }
+  .portFolio .lienSite {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 1267px) {
+  .portFolio .titre-portfolio {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .portFolio .titre-portfolio {
+    font-size: 1.2rem;
+  }
+  .overlay {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .overlay {
+    display: none;
+  }
+  .portFolio .lienGit {
+    display: none;
+  }
+  .portFolio .lienSite {
+    display: none;
+  }
+  .imgRealisation img {
+    height: 25vh;
+  }
+  .portFolio .container-fluid .containerRealisation .blocRea .overlay .resume {
+    display: none;
+  }
+  .portFolio .lienGit {
+    font-size: .8rem;
+  }
+  .portFolio .lienGit .git1, .portFolio .lienGit .git2 {
+    font-size: 1.5rem;
+  }
+  .portFolio .lienSite {
+    font-size: .8rem;
+  }
+  .portFolio .lienSite {
+    font-size: .8rem;
+  }
+  .overlay {
+    width: 92%;
+    height: 88%;
+  }
+}
+
+.parcours h2 {
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 /* TIMELINE
@@ -428,22 +804,6 @@ ul {
   background: #fff;
   /* background: black;  */
   border-left: 3px double white;
-}
-
-.timeline2 ul li::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 30px;
-  /* bottom: 0;  bottom: 50%;=center top: 30px;=top  */
-  transform: translateX(-55%);
-  /* transform: translateX(-50%); */
-  -webkit-transform: translateX(-55%);
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: inherit;
-  border: 2px solid #03A9F4;
 }
 
 .timeline2 ul li div {
@@ -633,6 +993,10 @@ ul {
           align-items: center;
 }
 
+.contact h2 {
+  margin-top: 2em;
+}
+
 .contact a {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -647,8 +1011,23 @@ ul {
           align-items: center;
 }
 
+.contact .lienCv {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.contact .lienCv:hover {
+  text-decoration: none;
+  color: royalblue;
+}
+
+.contact .bloc-cv {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
 .contact .image-cv {
-  width: 10%;
+  width: 20%;
   -webkit-transition: -webkit-transform .5s;
   transition: -webkit-transform .5s;
   transition: transform .5s;
@@ -656,8 +1035,8 @@ ul {
 }
 
 .contact .image-cv:hover {
-  -webkit-transform: scale(6);
-          transform: scale(6);
+  -webkit-transform: scale(4);
+          transform: scale(4);
 }
 
 .contact p {
@@ -667,5 +1046,125 @@ ul {
 
 .contact h3 {
   margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  color: white;
+}
+
+.contact .mailContact {
+  font-size: 2rem;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 5px;
+}
+
+.contact .mailContact:hover {
+  background-color: royalblue;
+  border-radius: 10px;
+  color: white;
+}
+
+.contact .reseaux {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 6rem;
+  width: 30%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+@media screen and (max-width: 414px) {
+  .contact .reseaux {
+    width: 70%;
+  }
+}
+
+.contact .contenuContact {
+  text-align: center;
+}
+
+.contact .rgpd {
+  background-color: black;
+  color: white;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin-top: 1em;
+  padding: 10px;
+  margin-bottom: 0px;
+}
+
+.typewriter {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.typewriter h3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  /* Ensures the content is not revealed until the animation */
+  border-right: 0.15em solid black;
+  /* The typwriter cursor */
+  white-space: nowrap;
+  /* Keeps the content on a single line */
+  margin: 0px;
+  /* Gives that scrolling effect as the typing happens */
+  -webkit-animation: typing 6s steps(50, end), blink-caret 0.5s infinite;
+          animation: typing 6s steps(50, end), blink-caret 0.5s infinite;
+  padding-left: 24px;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+/* The typing effect */
+@-webkit-keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 105%;
+  }
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 105%;
+  }
+}
+
+/* The typewriter cursor effect */
+@-webkit-keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #005204;
+  }
+}
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #005204;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .typewriter h3 {
+    font-size: 1rem;
+  }
+}
+
+#scrollUp {
+  width: 50%;
+}
+
+.imgFleche {
+  width: 50px;
 }
 /*# sourceMappingURL=style.css.map */
